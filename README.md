@@ -4,4 +4,4 @@
 
 ## 환경
 
-HTML, CSS, JS, Python Flask
+HTML, CSS, JS, Python Flask, MongoDB
