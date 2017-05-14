@@ -1,9 +1,9 @@
 import pymongo,pprint,random
-from flask import Flask,render_template,request,make_response
+from flask import redirect,Flask,render_template,request,make_response
 app = Flask(__name__)
 
 connection = pymongo.MongoClient("mongodb://localhost")
-db = connection.testdb1
+db = connection.testdb2
 collection = db.test_collection
 users = db.users
 
@@ -22,7 +22,10 @@ def main_page():
     	idx = request.cookies.get('user').find('/')
         user1 = request.cookies.get('user')[:idx]
         user1 = users.find_one({"name":user1})
-        message = str(user1['message'])
+        try:        
+            message = str(user1['message'])
+        except:
+            message = None
     else:
         message= None
     return render_template('sample4_next2.html',users=user_list,not_cookie=(not cookie),content=content,message = message)
@@ -32,14 +35,27 @@ def login():
     name = request.form['name']
     user = request.form['id']
     pass1 = request.form['pw']
+    #user_list=[]
+    #for user in users.find():
+    #    user_list.append((user['name'],user['id']))
+    #pprint.pprint(users.find({}))
     if users.find_one({"id":user,"pw":pass1})!=None:
         user1 = users.find_one({"id":user,"pw":pass1})
-        mess = str(user1['message'])
+        try:
+	    mess = str(user1['message'])
+        except:
+            mess = None
         resp = make_response(render_template('sample4_next2.html', not_cookie=False, content=name+'/'+user, message=mess))
         resp.set_cookie('user',name+'/'+user)
         return resp
     else:
         return "Login Failed"
+
+@app.route("/logout")
+def logout():
+    resp = make_response(redirect('/'))
+    resp.set_cookie('user','',expires=0)
+    return resp
 
 @app.route("/search",methods=['POST'])
 def search():
@@ -101,6 +117,7 @@ def match():
     content = request.cookies.get('user')
     return render_template('sample4_next2.html', content = content, not_cookie=False, message=message)
 
+
 @app.route("/register",methods=['POST'])
 def hello_user():
     print request.form
@@ -114,7 +131,12 @@ def hello_user():
     else:
         return "Same name already exists"
     #return str(user)+'\n'+str(pass1)+'\n'+str(name)
-    return render_template('sample4_next2.html', not_cookie=False, content=name+'/'+user)#render_template('sample4_next2.html',not_cookie=True)
+    resp = make_response(render_template('sample4_next2.html', not_cookie=False, content=name+'/'+user, message=mess))
+    #resp = make_response(redirect('/'))
+    #resp.set_cookie('user','',expires=0)
+    return resp
+
+    #return render_template('sample4_next2.html', not_cookie=False, content=name+'/'+user)#render_template('sample4_next2.html',not_cookie=True)
 
 if __name__ == "__main__":
     app.run(debug=True,host='0.0.0.0',port=5000)
