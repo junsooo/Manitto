@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <!-- Theme Made By www.w3schools.com - No Copyright -->
+  <title>당신의 마니또를 찾아드립니다.</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.0.0/css/bootstrap-datetimepicker.min.css" rel="stylesheet" /> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment-with-locales.min.js"></script> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.0.0/js/bootstrap-datetimepicker.min.js"></script>
+
+  <style>
+  body {
+      font: 400 15px Lato, sans-serif;
+      line-height: 1.8;
+      color: #818181;
+  }
+  h2 {
+      font-size: 24px;
+      text-transform: uppercase;
+      color: #303030;
+      font-weight: 600;
+      margin-bottom: 30px;
+  }
+  h4 {
+      font-size: 19px;
+      line-height: 1.375em;
+      color: #303030;
+      font-weight: 400;
+      margin-bottom: 30px;
+  }  
+  .jumbotron {
+      background-color: #B0E3F4;
+      color: #000;
+      padding: 100px 25px;
+      font-family: Montserrat, sans-serif;
+  }
+  .container-fluid {
+      padding: 60px 50px;
+  }
+  .bg-grey {
+      background-color: #f6f6f6;
+  }
+  .logo-small {
+      color: #f4511e;
+      font-size: 50px;
+  }
+  .logo {
+      color: #B0E3F4;
+      font-size: 200px;
+  }
+  .thumbnail {
+      padding: 0 0 15px 0;
+      border: none;
+      border-radius: 0;
+  }
+  .thumbnail img {
+      width: 100%;
+      height: 100%;
+      margin-bottom: 10px;
+  }
+  .carousel-control.right, .carousel-control.left {
+      background-image: none;
+      color: #B0E3F4;
+  }
+  .carousel-indicators li {
+      border-color: #B0E3F4;
+  }
+  .carousel-indicators li.active {
+      background-color: #B0E3F4;
+  }
+  .item h4 {
+      font-size: 19px;
+      line-height: 1.375em;
+      font-weight: 400;
+      font-style: italic;
+      margin: 70px 0;
+  }
+  .item span {
+      font-style: normal;
+  }
+  .panel {
+      border: 1px solid #B0E3F4; 
+      border-radius:0 !important;
+      transition: box-shadow 0.5s;
+  }
+  .panel:hover {
+      box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+  }
+  .panel-footer .btn:hover {
+      border: 1px solid #f4511e;
+      background-color: #fff !important;
+      color: #B0E3F4;
+  }
+  .panel-heading {
+      color: #fff !important;
+      background-color: #B0E3F4 !important;
+      padding: 25px;
+      border-bottom: 1px solid transparent;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+  }
+  .panel-footer {
+      background-color: white !important;
+  }
+  .panel-footer h3 {
+      font-size: 32px;
+  }
+  .panel-footer h4 {
+      color: #aaa;
+      font-size: 14px;
+  }
+  .panel-footer .btn {
+      margin: 15px 0;
+      background-color: #B0E3F4;
+      color: #fff;
+  }
+  .navbar {
+      margin-bottom: 0;
+      background-color: #66CCFF;
+      z-index: 9999;
+      border: 0;
+      font-size: 12px !important;
+      line-height: 1.42857143 !important;
+      letter-spacing: 4px;
+      border-radius: 0;
+      font-family: Montserrat, sans-serif;
+  }
+  .navbar li a, .navbar .navbar-brand {
+      color: #fff !important;
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a {
+      color: #B0E3F4 !important;
+      background-color: #fff !important;
+  }
+  .navbar-default .navbar-toggle {
+      border-color: transparent;
+      color: #fff !important;
+  }
+  footer .glyphicon {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #B0E3F4;
+  }
+  .slideanim {visibility:hidden;}
+  .slide {
+      animation-name: slide;
+      -webkit-animation-name: slide;
+      animation-duration: 1s;
+      -webkit-animation-duration: 1s;
+      visibility: visible;
+  }
+  @keyframes slide {
+    0% {
+      opacity: 0;
+      transform: translateY(70%);
+    } 
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+  @-webkit-keyframes slide {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(70%);
+    } 
+    100% {
+      opacity: 1;
+      -webkit-transform: translateY(0%);
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+    }
+    .btn-lg {
+        width: 100%;
+        margin-bottom: 35px;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .Manitto {
+        font-size: 150px;
+    }
+  }
+  </style>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#myPage">Manitto</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        {% if not_cookie %}<li><a href="#login">로그인</a></li>{% endif %}
+        <li><a href="#matching">마니또 매칭</a></li>
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#mypage">
+  나의 공간
+</button>
+ 
+<!-- Modal -->
+<div class="modal fade" id="mypage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title" id="myModalLabel">{% if not_cookie %}로그인 해주세요!{% endif %}
+        {% if not not_cookie %}{{ content }}{% endif %}</h4>
+      </div>
+      <div class="modal-body">
+        {% if not not_cookie %}
+        당신의 마니또는 {{ message }}입니다. 잘해주세요!!{% endif %}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="jumbotron text-center">
+  <img src="/static/manitto.jpeg" class="img-responsive img-rounded margin" style="display:inline" alt="마니또규칙" width="1000" height="1000">
+  <p>KAIST 전산학부 이준수, 김정혜가 개발한 마니또 매칭 페이지입니다.</p> 
+</div>
+{% if not_cookie %}
+<!-- Container (login Section) -->
+<div id="login" class="container-fluid">
+  <div class="logo">로그인</div>
+  <!-- Main Form -->
+  <div class="login-form-1">
+    <form id="login-form" class="text-left" action="login" method="POST">
+      <div class="login-form-main-message"></div>
+      <div class="main-login-form">
+        <div class="login-group">
+          <div class="form-group">
+            <label for="lg_username" class="sr-only">이름</label>
+            <input type="text" class="form-control" name="name" placeholder="이름">
+          </div>
+           <div class="form-group">
+            <label for="lg_id" class="sr-only">아이디</label>
+            <input type="text" class="form-control" id="lg_id" name="id" placeholder="아이디">
+          </div>
+          <div class="form-group">
+            <label for="lg_password" class="sr-only">비밀번호</label>
+            <input type="password" class="form-control" id="lg_password" name="pw" placeholder="비밀번호">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-default"><i class="fa fa-chevron-right"></i>로그인</button>
+      </div>
+      </form>
+        <p>새로 오셨나요? <a href="#">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2" >
+    click here
+  </button>
+
+  <!-- 모달 팝업 -->
+  <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+      <div class="modal-content" style="padding : 20px;">
+        <div class="page-header">
+    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+     <h1>회원가입</h1>
+        </div>
+        <div class="modal-body">
+         
+        <div class="">
+          <form action="register" method="POST">
+            <div class="form-group">
+              <label for="username">이름</label>
+              <input type="text" class="form-control" id="username" name="name" placeholder="이름을 입력해 주세요">
+            </div>
+            <div class="form-group">
+              <label for="InputEmail">아이디</label>
+              <input type="text" class="form-control" id="InputEmail" name="id" placeholder="아이디">
+            </div>
+            <div class="form-group">
+              <label for="InputPassword1">비밀번호</label>
+              <input type="password" class="form-control" name="pw" id="InputPassword1" placeholder="비밀번호">
+            </div>
+            <div class="form-group">
+              <label for="InputPassword2">비밀번호 확인</label>
+              <input type="password" class="form-control" name="pw1" id="InputPassword2" placeholder="비밀번호 확인">
+              <p class="help-block">비밀번호 확인을 위해 다시한번 입력 해 주세요</p>
+            </div>
+            <div class="form-group text-center">
+              <button type="submit" class="btn btn-primary">회원가입</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">가입취소</button>
+            </div>
+          </form>
+        </div>
+        </div>
+        <div class="modal-footer">
+    
+
+        </div>
+      </div>
+    </div>
+  </div>
+      </div>
+    </form>
+  </div>
+  <!-- end:Main Form -->
+</div>
+{% endif %}
+
+<form action="match" method="POST">
+<!-- Container (Services Section) -->
+<div id="matching" class="container-fluid text-center">
+  <div class="container">
+  <h2>마니또 매칭</h2>
+  {% if not not_cookie %}{% for name, id in users %}
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" value="" name="box{{name}}">
+      {{name}}
+    </label>
+  </div>
+  {% endfor %}{% endif %}
+  {% if not_cookie %}로그인 해주세요!{% endif %}
+  
+  </div>
+{% if not not_cookie %}
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#time">
+  마감시간 설정 및 제외할 쌍 지정
+</button>
+ {% endif %}
+<!-- Modal -->
+<div class="modal fade" id="time" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title" id="myModalLabel">마감시간 설정 및 제외할 쌍 지정</h4>
+      </div>
+      <div class="modal-body">
+        <h4>마감시간 설정</h4>
+        <input id="toDate" name="toDate" type="datetime-local">
+        <h4> </h4>
+        <h4>제외할 쌍 지정</h4>
+        <input name="remove1" type="text"><input name="remove2" type="text"><br><br>
+        <input name="remove3" type="text"><input name="remove4" type="text"><br><br>
+        <input name="remove5" type="text"><input name="remove6" type="text"><br>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">전송</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</form>
+
+<footer class="container-fluid text-center">
+  <a href="#myPage" title="To Top">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a>
+  <p>Bootstrap Theme Made By <a href="https://www.w3schools.com" title="Visit w3schools">www.w3schools.com</a></p>
+</footer>
+
+<script>
+
+
+
+$(document).ready(function(){
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+  
+  $(window).scroll(function() {
+    $(".slideanim").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos < winTop + 600) {
+          $(this).addClass("slide");
+        }
+    });
+  });
+})
+</script>
+
+</body>
+</html>
